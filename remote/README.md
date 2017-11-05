@@ -3,7 +3,8 @@
 1. Start BeamNG
 2. Allow remotes to control the game (make sure firewall allows incoming connections)
 3. Enable gauge data to be sent out (optional in the menus)
-4. Run `listen.py` -> `establish.py` -> `control.py`
+4. Get the ID (generated on startup) from the QR code, update Python scripts with this ID
+5. Run `listen.py` -> `establish.py` -> `control.py`
 
 #### Todo:
 
@@ -14,3 +15,8 @@
 
 - Data is all UDP. If control data isn't sent in a certain amount of time, the game will timeout and the controller will disconnect. You have to reestablish the connection again to restart.
 - IDs are sent with the packets, can be used for lag detection / compensation
+
+#### Issues:
+
+- No telemetry data
+- ~~If the main window loses focus, it doesn't accept input~~ This is a menu setting!
