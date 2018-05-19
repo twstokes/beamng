@@ -8,7 +8,7 @@
 
 #### Todo:
 
-1. Convert the struct from the Swift code to handling incoming data
+1. Handle incoming data
 2. Convert to Go?
 
 #### Notes:
