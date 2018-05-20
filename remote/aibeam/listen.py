@@ -4,7 +4,7 @@ import sys
 
 import time
 
-# determined by the game
+# configured in the game
 PORT = 4445
 
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -37,9 +37,9 @@ def dataToDict(data):
         'id',
     ]
 
+    # zip and convert to dict
     d = {k: v for (k, v) in zip(keys, t)}
-
-    # convert strings
+    # decode any byte arrays to utf-8
     for k in ['car', 'gear', 'plid', 'display1', 'display2']:
         d[k] = d[k].decode('utf-8')
 
@@ -49,7 +49,6 @@ def dataToDict(data):
 def listenForPayload():
     # currently getting a payload of 96 bytes
     data, _ = s.recvfrom(100)
-
     return dataToDict(data)
 
 
@@ -57,7 +56,7 @@ def main():
     while True:
         d = listenForPayload()
         print(d),
-        time.sleep(1)
+        # time.sleep(1)
 
 
 if __name__ == '__main__':

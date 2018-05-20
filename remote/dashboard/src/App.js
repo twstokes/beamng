@@ -1,9 +1,16 @@
 import React, { Component } from "react";
-import "./App.css";
+import styled from "styled-components";
 
 import Throttle from "./components/Throttle";
 import Speed from "./components/Speed";
-import RPM from "./components/RPM";
+import Rpm from "./components/Rpm";
+import LineGraph from "./components/Line";
+
+const Wrapper = styled.div``;
+
+const Container = styled.div`
+  display: flex;
+`;
 
 class App extends Component {
   constructor(props) {
@@ -27,14 +34,21 @@ class App extends Component {
   }
 
   render() {
-    if (this.state.data === null) return null;
+    if (this.state.data === null) {
+      return <h2>Awaiting websocket connection...</h2>;
+    }
 
     return (
-      <div className="App">
-        <Throttle value={this.state.data.throttle} />
-        <RPM value={this.state.data.rpm} />
-        <Speed value={this.state.data.speed} />
-      </div>
+      <Wrapper>
+        <Container>
+          <Throttle value={this.state.data.throttle} />
+          <Rpm value={this.state.data.rpm} />
+          <Speed value={this.state.data.speed} />
+        </Container>
+        <Container>
+          <LineGraph values={this.state.data} />
+        </Container>
+      </Wrapper>
     );
   }
 }
