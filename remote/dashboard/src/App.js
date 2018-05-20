@@ -1,67 +1,69 @@
-import React, { Component } from "react";
-import styled from "styled-components";
+import React, { Component } from "react"
+import styled from "styled-components"
 
-import Throttle from "./components/Throttle";
-import Speed from "./components/Speed";
-import Rpm from "./components/Rpm";
-import Fuel from "./components/Fuel";
-import OilTemp from "./components/OilTemp";
-import EngineTemp from "./components/EngineTemp";
-import Turbo from "./components/Turbo";
+import Throttle from "./components/Throttle"
+import Speed from "./components/Speed"
+import Rpm from "./components/Rpm"
+import Fuel from "./components/Fuel"
+import OilTemp from "./components/OilTemp"
+import EngineTemp from "./components/EngineTemp"
+import Turbo from "./components/Turbo"
 
-import LineGraph from "./components/Line";
+const Wrapper = styled.div``
 
-const Wrapper = styled.div``;
-
-const Container = styled.div`
+const Row = styled.div`
   display: flex;
-`;
+`
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.ws = null;
-    this.state = { data: null };
-  }
+  state = { data: null }
 
   componentDidMount() {
-    this.ws = new WebSocket("ws://127.0.0.1:5678/");
+    this.ws = new WebSocket("ws://127.0.0.1:5678/")
 
-    this.ws.onmessage = function(event) {
-      let j = JSON.parse(event.data);
-
-      this.setState({ data: j });
-    }.bind(this);
+    this.ws.onmessage = event => {
+      let j = JSON.parse(event.data)
+      this.setState({ data: j })
+    }
   }
 
   componentWillUnmount() {
-    this.ws.close();
+    this.ws.close()
   }
 
   render() {
     if (this.state.data === null) {
-      return <h2>Awaiting websocket connection...</h2>;
+      return <h2>Awaiting websocket connection...</h2>
     }
+
+    let {
+      throttle,
+      rpm,
+      speed,
+      turbo,
+      fuel,
+      oilTempC,
+      engTempC,
+    } = this.state.data
 
     return (
       <Wrapper>
-        <Container>
-          <Throttle value={this.state.data.throttle} />
-          <Rpm value={this.state.data.rpm} />
-          <Speed value={this.state.data.speed} />
-        </Container>
-        <Container>
-          {/* <LineGraph values={this.state.data} /> */}
-          <Turbo value={this.state.data.turbo} />
-          <Fuel value={this.state.data.fuel} />
-          <OilTemp value={this.state.data.oilTempC} />
-        </Container>
-        <Container>
-          <EngineTemp value={this.state.data.engTempC} />
-        </Container>
+        <Row>
+          <Throttle value={throttle} />
+          <Rpm value={rpm} />
+          <Speed value={speed} />
+        </Row>
+        <Row>
+          <Turbo value={turbo} />
+          <Fuel value={fuel} />
+          <OilTemp value={oilTempC} />
+        </Row>
+        <Row>
+          <EngineTemp value={engTempC} />
+        </Row>
       </Wrapper>
-    );
+    )
   }
 }
 
-export default App;
+export default App

@@ -1,20 +1,13 @@
-import React from "react";
-import styled from "styled-components";
-import Gauge from "react-svg-gauge";
-
-const Wrapper = styled.div`
-  padding: 2em;
-  background-color: #eee;
-  flex: 1 100%;
-  min-width: 300px;
-`;
+import React from "react"
+import Gauge from "react-svg-gauge"
+import GaugeWrapper from "./GaugeWrapper"
 
 const toMPH = mpers => {
-  return Math.round(mpers * 2.23694);
-};
+  return Math.round(mpers * 2.23694)
+}
 
 let Speed = props => (
-  <Wrapper>
+  <GaugeWrapper>
     <Gauge
       value={toMPH(props.value)}
       max="120"
@@ -22,7 +15,7 @@ let Speed = props => (
       height={320}
       label="MPH"
     />
-  </Wrapper>
-);
+  </GaugeWrapper>
+)
 
-export default Speed;
+export default Speed

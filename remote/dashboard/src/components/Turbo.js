@@ -1,16 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import Gauge from "react-svg-gauge";
-
-const Wrapper = styled.div`
-  padding: 2em;
-  background-color: #eee;
-  flex: 1 100%;
-  min-width: 300px;
-`;
+import React from "react"
+import Gauge from "react-svg-gauge"
+import GaugeWrapper from "./GaugeWrapper"
 
 let Turbo = props => (
-  <Wrapper>
+  <GaugeWrapper>
     <Gauge
       value={Math.round(props.value)}
       min="-4"
@@ -19,7 +12,7 @@ let Turbo = props => (
       height={320}
       label="Turbo"
     />
-  </Wrapper>
-);
+  </GaugeWrapper>
+)
 
-export default Turbo;
+export default Turbo

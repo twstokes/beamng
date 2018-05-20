@@ -1,15 +1,15 @@
-import React from "react";
-import styled from "styled-components";
-import { Line } from "react-chartjs-2";
+import React from "react"
+import styled from "styled-components"
+import { Line } from "react-chartjs-2"
 
 const Wrapper = styled.div`
   padding: 2em;
   background-color: #eee;
   flex: 1 100%;
   min-width: 300px;
-`;
+`
 
-const options = {};
+const options = {}
 
 const data = values => {
   return {
@@ -24,13 +24,13 @@ const data = values => {
         data: [
           {
             x: 10,
-            y: 20
+            y: 20,
           },
           {
             x: 15,
-            y: 10
-          }
-        ]
+            y: 10,
+          },
+        ],
       },
       {
         label: "RPM",
@@ -42,22 +42,22 @@ const data = values => {
         data: [
           {
             x: 10,
-            y: 2000
+            y: 2000,
           },
           {
             x: 15,
-            y: 1050
-          }
-        ]
-      }
-    ]
-  };
-};
+            y: 1050,
+          },
+        ],
+      },
+    ],
+  }
+}
 
 let LineGraph = props => (
   <Wrapper>
     <Line data={data(props.values)} options={options} />
   </Wrapper>
-);
+)
 
-export default LineGraph;
+export default LineGraph
