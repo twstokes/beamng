@@ -5,6 +5,8 @@ import { Line } from "react-chartjs-2";
 const Wrapper = styled.div`
   padding: 2em;
   background-color: #eee;
+  flex: 1 100%;
+  min-width: 300px;
 `;
 
 const options = {};

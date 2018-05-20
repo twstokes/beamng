@@ -26,7 +26,7 @@ def dataToDict(data):
         'engTempC',
         'fuel',
         'oilPressure',
-        'oilTemp',
+        'oilTempC',
         'dashLights',
         'showLights',
         'throttle',

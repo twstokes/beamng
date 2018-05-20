@@ -4,6 +4,10 @@ import styled from "styled-components";
 import Throttle from "./components/Throttle";
 import Speed from "./components/Speed";
 import Rpm from "./components/Rpm";
+import Fuel from "./components/Fuel";
+import OilTemp from "./components/OilTemp";
+import EngineTemp from "./components/EngineTemp";
+
 import LineGraph from "./components/Line";
 
 const Wrapper = styled.div``;
@@ -24,7 +28,7 @@ class App extends Component {
 
     this.ws.onmessage = function(event) {
       let j = JSON.parse(event.data);
-      // console.log(j);
+
       this.setState({ data: j });
     }.bind(this);
   }
@@ -44,6 +48,11 @@ class App extends Component {
           <Throttle value={this.state.data.throttle} />
           <Rpm value={this.state.data.rpm} />
           <Speed value={this.state.data.speed} />
+        </Container>
+        <Container>
+          <Fuel value={this.state.data.fuel} />
+          <OilTemp value={this.state.data.oilTempC} />
+          <EngineTemp value={this.state.data.engTempC} />
         </Container>
         <Container>
           <LineGraph values={this.state.data} />

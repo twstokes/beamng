@@ -9,16 +9,16 @@ const Wrapper = styled.div`
   min-width: 300px;
 `;
 
-let Throttle = props => (
+let Fuel = props => (
   <Wrapper>
     <Gauge
       value={Math.round(props.value * 100)}
       max="100"
       width={400}
       height={320}
-      label="Throttle"
+      label="Fuel"
     />
   </Wrapper>
 );
 
-export default Throttle;
+export default Fuel;

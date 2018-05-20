@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Bar } from "react-chartjs-2";
+import Gauge from "react-svg-gauge";
 
 const Wrapper = styled.div`
   padding: 2em;
@@ -9,39 +9,15 @@ const Wrapper = styled.div`
   min-width: 300px;
 `;
 
-const options = {
-  scales: {
-    yAxes: [
-      {
-        ticks: {
-          beginAtZero: true,
-          min: 0,
-          max: 6000
-        }
-      }
-    ]
-  }
-};
-
-const data = value => {
-  return {
-    datasets: [
-      {
-        label: "RPM",
-        backgroundColor: "rgba(255,99,132,0.2)",
-        borderColor: "rgba(255,99,132,1)",
-        borderWidth: 1,
-        hoverBackgroundColor: "rgba(255,99,132,0.4)",
-        hoverBorderColor: "rgba(255,99,132,1)",
-        data: [Math.round(value)]
-      }
-    ]
-  };
-};
-
 let Rpm = props => (
   <Wrapper>
-    <Bar data={data(props.value)} options={options} width={25} height={25} />
+    <Gauge
+      value={Math.round(props.value)}
+      max="6000"
+      width={400}
+      height={320}
+      label="RPM"
+    />
   </Wrapper>
 );
 
