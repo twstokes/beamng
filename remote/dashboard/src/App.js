@@ -15,6 +15,10 @@ const Row = styled.div`
   display: flex;
 `
 
+const WaitMessage = styled.div`
+  margin: 10px;
+`
+
 class App extends Component {
   state = { data: null }
 
@@ -33,7 +37,11 @@ class App extends Component {
 
   render() {
     if (this.state.data === null) {
-      return <h2>Awaiting websocket connection...</h2>
+      return (
+        <WaitMessage>
+          <h2>Awaiting incoming data...</h2>
+        </WaitMessage>
+      )
     }
 
     let {
