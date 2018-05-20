@@ -3,8 +3,9 @@
 1. Start BeamNG
 2. Allow remotes to control the game (make sure firewall allows incoming connections)
 3. Enable gauge data to be sent out (optional in the menus)
-4. Get the ID (generated on startup) from the QR code, update Python scripts with this ID
-5. Run `listen.py` -> `establish.py` -> `control.py`
+4. Get the ID (generated on startup) from the QR code, update Python scripts with this ID (this may be appended to the App Store URL after the URL fragment)
+5. Run `control.py`
+6. Run `listen.py` for gauge data
 
 #### Todo:
 
