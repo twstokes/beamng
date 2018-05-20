@@ -7,6 +7,7 @@ import Rpm from "./components/Rpm";
 import Fuel from "./components/Fuel";
 import OilTemp from "./components/OilTemp";
 import EngineTemp from "./components/EngineTemp";
+import Turbo from "./components/Turbo";
 
 import LineGraph from "./components/Line";
 
@@ -50,12 +51,13 @@ class App extends Component {
           <Speed value={this.state.data.speed} />
         </Container>
         <Container>
+          {/* <LineGraph values={this.state.data} /> */}
+          <Turbo value={this.state.data.turbo} />
           <Fuel value={this.state.data.fuel} />
           <OilTemp value={this.state.data.oilTempC} />
-          <EngineTemp value={this.state.data.engTempC} />
         </Container>
         <Container>
-          <LineGraph values={this.state.data} />
+          <EngineTemp value={this.state.data.engTempC} />
         </Container>
       </Wrapper>
     );

@@ -12,8 +12,9 @@ const Wrapper = styled.div`
 let Turbo = props => (
   <Wrapper>
     <Gauge
-      value={Math.round(props.value * 100)}
-      max="35"
+      value={Math.round(props.value)}
+      min="-4"
+      max="20"
       width={400}
       height={320}
       label="Turbo"
